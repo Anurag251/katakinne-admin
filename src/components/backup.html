@@ -1,0 +1,828 @@
+<div className="product_order">
+  <div className="container-fluid py-4">
+    <div className="row">
+      <div className="col-12 mt-4">
+        <div className="card mb-4">
+          <div className="card-header pb-0 p-3">
+            <h4 className="mb-1">Orders</h4>
+          </div>
+          <div className="card-body p-3">
+            <div className="row">
+              <div className="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                <div className="card card-blog card-plain">
+                  <div className="position-relative">
+                    <a className="d-block shadow-xl border-radius-xl">
+                      <img
+                        src="../assets/img/products/05-270x270.jpg"
+                        alt="img-blur-shadow"
+                        className="img-fluid shadow border-radius-xl"
+                      />
+                    </a>
+                  </div>
+                  <div className="card-body px-1 pb-0">
+                    <a href="javascript:;">
+                      <h5>Modern</h5>
+                    </a>
+                    <h6>Rs: 200/-</h6>
+                    <p className="mb-4 text-sm">
+                      As Uber works through a huge amount of internal management
+                      turmoil.
+                    </p>
+                    <div
+                      className="
+                           d-flex
+                           align-items-center
+                           justify-content-between
+                         "
+                    >
+                      <button
+                        type="button"
+                        className="btn btn-outline-primary btn-sm mb-0"
+                      >
+                        Continue
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-danger btn-sm mb-0"
+                      >
+                        <i className="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="all_products">
+  <div className="container-fluid py-4">
+    <div className="row">
+      <div className="col-12">
+        <div className="card mb-4">
+          <div className="card-header pb-0 flex-title">
+            <h4>Orders</h4>
+
+            <form action="">
+              <select name="" className="form-control">
+                <label>Status</label>
+                <option value="">Select</option>
+                <option value="">Select2</option>
+                <option value="">Select3</option>
+              </select>
+              <button className="btn btn-primary" type="submit">Filter</button>
+            </form>
+          </div>
+          <div className="card-body px-0 pt-0 pb-2">
+            <div className="table-responsive p-0">
+              <table className="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th
+                      className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Product
+                    </th>
+                    <th
+                      className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                    >
+                      Date
+                    </th>
+                    <th
+                      className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Payment
+                    </th>
+                    <th
+                      className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Fullfillment
+                    </th>
+
+                    <th
+                      className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Shipping Address
+                    </th>
+
+                    <th
+                      className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Total
+                    </th>
+
+                    <th
+                      className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {datas.length !== 0 ? datas.map((data) => (
+                  <tr key="{data.id}">
+                    <td>
+                      <div className="d-flex px-2 py-1">
+                        <div>
+                          <img
+                            src="{data.image}"
+                            className="avatar avatar-sm me-3"
+                            alt="user1"
+                          />
+                        </div>
+                        <div
+                          className="d-flex flex-column justify-content-center"
+                        >
+                          <h6 className="mb-0 text-sm">{data.name}</h6>
+
+                          <p className="text-xs text-secondary mb-0">
+                            #43r21r23r3
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <span className="text-secondary text-xs font-weight-bold">
+                        23/04/2018
+                      </span>
+                    </td>
+
+                    <td className="align-middle text-center text-sm">
+                      <div className="group" id="selectBtnGroups">
+                        <form action="">
+                          <select
+                            name=""
+                            className="form-control"
+                            id="selectBtn"
+                          >
+                            <option value="">Select</option>
+                            <option value="">Select2</option>
+                            <option value="">Select3</option>
+                          </select>
+                          <button
+                            type="submit"
+                            id="toBeTrigger"
+                            hidden
+                          ></button>
+                        </form>
+                      </div>
+                    </td>
+
+                    <td className="align-middle text-center FULLFILLMENT">
+                      <p className="text-xs font-weight-bold mb-0 Delivered">
+                        Delivered
+                      </p>
+
+                      <p className="text-xs font-weight-bold mb-0 inProgress">
+                        In Progress
+                      </p>
+
+                      <p className="text-xs font-weight-bold mb-0 Cancel">
+                        Cancel
+                      </p>
+                    </td>
+
+                    <td
+                      className="align-middle text-center"
+                      id="openAddressElement"
+                    >
+                      <button
+                        className="btn btn-primary m-0 p-2"
+                        id="addressButton"
+                      >
+                        View
+                      </button>
+
+                      <div className="open-address" id="openAddress">
+                        <div className="details" id="address1">
+                          <span>
+                            <h5 className="name">Pankaj Kushwaha</h5>
+                          </span>
+                          <h5 className="locations">
+                            <i className="fas fa-map-marker-alt"></i>
+                            Koteshowr, Kathmandu, 14400, Bagmati, Nepal
+                          </h5>
+
+                          <h5 className="mobile-number">
+                            <i className="fas fa-phone-alt"></i>
+                            +977-9845412777
+                          </h5>
+
+                          <h5 className="email">
+                            <i className="fas fa-envelope"></i>
+                            pankaj.mahat@gmail.com
+                          </h5>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td className="align-middle text-center">
+                      <h4 className="text-xs font-weight-bold mb-0">
+                        Rs 1000/-
+                      </h4>
+                    </td>
+
+                    <td className="align-middle">
+                      <a
+                        href="javascript:;"
+                        className="text-secondary font-weight-bold text-xs"
+                        data-toggle="tooltip"
+                        data-original-title="Edit user"
+                      >
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-sm mb-0"
+                        >
+                          <i className="fas fa-edit"></i>
+                        </button>
+                      </a>
+
+                      <a
+                        href="javascript:;"
+                        className="text-danger font-weight-bold text-xs"
+                        data-toggle="tooltip"
+                        data-original-title="Edit user"
+                      >
+                        <button
+                          type="button"
+                          className="btn btn-danger btn-sm mb-0 delete_btn"
+                          id="delete_btn"
+                        >
+                          <i className="fas fa-trash"></i>
+                        </button>
+
+                        <div className="delete_confirm_bg"></div>
+
+                        <div className="delete_confirm" id="delete_confirm">
+                          <div className="inner">
+                            <h4>Are you sure you want to delete</h4>
+
+                            <div className="btn-group">
+                              <button className="popup-delete-close">
+                                Cancel
+                              </button>
+
+                              <form action="">
+                                <button>Delete</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </td>
+                  </tr>
+                  )) : "null"}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="all_products">
+  <div className="container-fluid py-4">
+    <div className="row">
+      <div className="col-12">
+        <div className="card mb-4">
+          <div className="card-header pb-0 flex-title">
+            <h4>Inventory Item</h4>
+
+            <form action="">
+              <select name="" className="form-control">
+                <label>Status</label>
+                <option value="">Select</option>
+                <option value="">Select2</option>
+                <option value="">Select3</option>
+              </select>
+              <button className="btn btn-primary" type="submit">Filter</button>
+            </form>
+          </div>
+          <div className="card-body px-0 pt-0 pb-2">
+            <div className="table-responsive p-0">
+              <table className="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th
+                      className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Product
+                    </th>
+                    <th
+                      className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                    >
+                      Date
+                    </th>
+
+                    <th
+                      className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Fullfillment
+                    </th>
+
+                    <th
+                      className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Shipping Address
+                    </th>
+
+                    <th
+                      className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Size
+                    </th>
+
+                    <th
+                      className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      QTY
+                    </th>
+
+                    <th
+                      className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Total
+                    </th>
+
+                    <th
+                      className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Add Inventory
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {datas.length !== 0 ? datas.map((data) => (
+                  <tr key="{data.id}">
+                    <td>
+                      <div className="d-flex px-2 py-1">
+                        <div>
+                          <img
+                            src="{data.image}"
+                            className="avatar avatar-sm me-3"
+                            alt="user1"
+                          />
+                        </div>
+                        <div
+                          className="d-flex flex-column justify-content-center"
+                        >
+                          <h6 className="mb-0 text-sm">{data.name}</h6>
+
+                          <p className="text-xs text-secondary mb-0">
+                            #43r21r23r3
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <span className="text-secondary text-xs font-weight-bold">
+                        23/04/2018
+                      </span>
+                    </td>
+
+                    <td className="align-middle text-center text-sm">
+                      <div className="group" id="selectBtnGroups">
+                        <form action="">
+                          <select
+                            name=""
+                            className="form-control"
+                            id="selectBtn"
+                          >
+                            <option value="">Select</option>
+                            <option value="">Select2</option>
+                            <option value="">Select3</option>
+                          </select>
+                          <button
+                            type="submit"
+                            id="toBeTrigger"
+                            hidden
+                          ></button>
+                        </form>
+                      </div>
+                    </td>
+
+                    <td className="align-middle text-center FULLFILLMENT">
+                      <p className="text-xs font-weight-bold mb-0 Delivered">
+                        Delivered
+                      </p>
+
+                      <p className="text-xs font-weight-bold mb-0 inProgress">
+                        In Progress
+                      </p>
+
+                      <p className="text-xs font-weight-bold mb-0 Cancel">
+                        Cancel
+                      </p>
+                    </td>
+
+                    <td
+                      className="align-middle text-center"
+                      id="openAddressElement"
+                    >
+                      <button
+                        className="btn btn-primary m-0 p-2"
+                        id="addressButton"
+                      >
+                        View
+                      </button>
+
+                      <div className="open-address" id="openAddress">
+                        <div className="details" id="address1">
+                          <span>
+                            <h5 className="name">Pankaj Kushwaha</h5>
+                          </span>
+                          <h5 className="locations">
+                            <i className="fas fa-map-marker-alt"></i>
+                            Koteshowr, Kathmandu, 14400, Bagmati, Nepal
+                          </h5>
+
+                          <h5 className="mobile-number">
+                            <i className="fas fa-phone-alt"></i>
+                            +977-9845412777
+                          </h5>
+
+                          <h5 className="email">
+                            <i className="fas fa-envelope"></i>
+                            pankaj.mahat@gmail.com
+                          </h5>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td className="align-middle text-center">
+                      <h4 className="text-xs font-weight-bold mb-0">L</h4>
+                    </td>
+
+                    <td className="align-middle text-center">
+                      <h4 className="text-xs font-weight-bold mb-0">5</h4>
+                    </td>
+
+                    <td className="align-middle text-center">
+                      <h4 className="text-xs font-weight-bold mb-0">
+                        Rs 1000/-
+                      </h4>
+                    </td>
+                  </tr>
+                  )) : "null"}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="add_new_product">
+  <div className="container-fluid py-4">
+    <div className="row">
+      <div className="col-12">
+        <div className="card mb-4">
+          <div className="card-header pb-0">
+            <h4>Add Product</h4>
+          </div>
+          <div className="card-body px-0 pt-0 pb-2">
+            <div className="table-responsive p-0">
+              <form action="">
+                <div className="group">
+                  <label for="product-title">Product Title</label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    name=""
+                    id="product-title"
+                  />
+                </div>
+
+                <div className="group">
+                  <label for="product-desc">Product Description</label>
+                  <textarea
+                    className="form-control"
+                    name=""
+                    id="product-desc"
+                    cols="30"
+                    rows="10"
+                  ></textarea>
+                </div>
+
+                <div className="group">
+                  <label for="product-price">Price</label>
+                  <input
+                    className="form-control"
+                    type="number"
+                    name=""
+                    id="product-price"
+                  />
+                </div>
+
+                <div className="group">
+                  <label for="product-discount-price"> Discount Price </label>
+                  <input
+                    className="form-control"
+                    type="number"
+                    name=""
+                    id="product-discount-price"
+                  />
+                </div>
+
+                <div className="group">
+                  <label for="product-image">Product Image</label>
+                  <input
+                    className="form-control"
+                    type="file"
+                    name=""
+                    id="product-image"
+                  />
+                </div>
+
+                <div className="group">
+                  <button
+                    type="button"
+                    className="btn bg-gradient-info mt-4 mb-0"
+                  >
+                    Save Product
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="all_products">
+  <div className="container-fluid py-4">
+    <div className="row">
+      <div className="col-12">
+        <div className="card mb-4">
+          <div className="card-header pb-0">
+            <h4>Product List</h4>
+          </div>
+          <div className="card-body px-0 pt-0 pb-2">
+            <div className="table-responsive p-0">
+              <table className="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th
+                      className="
+                           text-uppercase text-secondary text-xxs
+                           font-weight-bolder
+                           opacity-7
+                         "
+                    >
+                      Product
+                    </th>
+                    <th
+                      className="
+                           text-uppercase text-secondary text-xxs
+                           font-weight-bolder
+                           opacity-7
+                           ps-2
+                         "
+                    >
+                      Company Name
+                    </th>
+                    <th
+                      className="
+                           text-center text-uppercase text-secondary text-xxs
+                           font-weight-bolder
+                           opacity-7
+                         "
+                    >
+                      Status
+                    </th>
+                    <th
+                      className="
+                           text-center text-uppercase text-secondary text-xxs
+                           font-weight-bolder
+                           opacity-7
+                         "
+                    >
+                      Date
+                    </th>
+                    <th
+                      className="
+                           text-uppercase text-secondary text-xxs
+                           font-weight-bolder
+                           opacity-7
+                         "
+                    >
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div className="d-flex px-2 py-1">
+                        <div>
+                          <img
+                            src="../assets/img/team-2.jpg"
+                            className="avatar avatar-sm me-3"
+                            alt="user1"
+                          />
+                        </div>
+                        <div
+                          className="
+                               d-flex
+                               flex-column
+                               justify-content-center
+                             "
+                        >
+                          <h6 className="mb-0 text-sm">John Michael</h6>
+                          <p className="text-xs text-secondary mb-0">
+                            john@creative-tim.com
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p className="text-xs font-weight-bold mb-0">Manager</p>
+                      <p className="text-xs text-secondary mb-0">
+                        Organization
+                      </p>
+                    </td>
+                    <td className="align-middle text-center text-sm">
+                      <span className="badge badge-sm bg-gradient-success">
+                        Online
+                      </span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">
+                        23/04/18
+                      </span>
+                    </td>
+                    <td className="align-middle">
+                      <a
+                        href="javascript:;"
+                        className="text-secondary font-weight-bold text-xs"
+                        data-toggle="tooltip"
+                        data-original-title="Edit user"
+                      >
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-sm mb-0"
+                        >
+                          <i className="fas fa-edit"></i>
+                        </button>
+                      </a>
+
+                      <a
+                        href="javascript:;"
+                        className="text-danger font-weight-bold text-xs"
+                        data-toggle="tooltip"
+                        data-original-title="Edit user"
+                      >
+                        <button
+                          type="button"
+                          className="btn btn-danger btn-sm mb-0"
+                        >
+                          <i className="fas fa-trash"></i>
+                        </button>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="row">
+      <div className="col-12">
+        <div className="card mb-4">
+          <div className="card-header pb-0">
+            <h6>Projects table</h6>
+          </div>
+          <div className="card-body px-0 pt-0 pb-2">
+            <div className="table-responsive p-0">
+              <table
+                className="
+                     table
+                     align-items-center
+                     justify-content-center
+                     mb-0
+                   "
+              >
+                <thead>
+                  <tr>
+                    <th
+                      className="
+                           text-uppercase text-secondary text-xxs
+                           font-weight-bolder
+                           opacity-7
+                         "
+                    >
+                      Project
+                    </th>
+                    <th
+                      className="
+                           text-uppercase text-secondary text-xxs
+                           font-weight-bolder
+                           opacity-7
+                           ps-2
+                         "
+                    >
+                      Budget
+                    </th>
+                    <th
+                      className="
+                           text-uppercase text-secondary text-xxs
+                           font-weight-bolder
+                           opacity-7
+                           ps-2
+                         "
+                    >
+                      Status
+                    </th>
+                    <th
+                      className="
+                           text-uppercase text-secondary text-xxs
+                           font-weight-bolder
+                           text-center
+                           opacity-7
+                           ps-2
+                         "
+                    >
+                      Completion
+                    </th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div className="d-flex px-2">
+                        <div>
+                          <img
+                            src="../assets/img/small-logos/logo-spotify.svg"
+                            className="avatar avatar-sm rounded-circle me-2"
+                            alt="spotify"
+                          />
+                        </div>
+                        <div className="my-auto">
+                          <h6 className="mb-0 text-sm">Spotify</h6>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p className="text-sm font-weight-bold mb-0">$2,500</p>
+                    </td>
+                    <td>
+                      <span className="text-xs font-weight-bold">
+                        working
+                      </span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <div
+                        className="
+                             d-flex
+                             align-items-center
+                             justify-content-center
+                           "
+                      >
+                        <span className="me-2 text-xs font-weight-bold">
+                          60%
+                        </span>
+                        <div>
+                          <div className="progress">
+                            <div
+                              className="progress-bar bg-gradient-info"
+                              role="progressbar"
+                              aria-valuenow="60"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="align-middle">
+                      <button className="btn btn-link text-secondary mb-0">
+                        <i className="fa fa-ellipsis-v text-xs"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

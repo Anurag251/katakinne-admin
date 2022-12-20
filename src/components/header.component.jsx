@@ -1,6 +1,31 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { url } from "../urls";
 
 const HeaderComponent = () => {
+  const navigate = useNavigate();
+  const userName = localStorage.getItem("username");
+
+  const logout = () => {
+    fetch(url + "/logout/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: "Token " + localStorage.getItem("token"),
+      },
+
+      body: JSON.stringify("refresh_token", localStorage.getItem("ref")),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.removeItem("ref");
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+
+        navigate("/login");
+      });
+  };
+
   return (
     <nav
       className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
@@ -10,26 +35,16 @@ const HeaderComponent = () => {
       <div className="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li className="breadcrumb-item text-sm">
-              <a className="opacity-5 text-dark" href="#">
-                Pages
-              </a>
-            </li>
-            <li
-              className="breadcrumb-item text-sm text-dark active"
-              aria-current="page"
-            >
-              Tables
-            </li>
+            <li className="breadcrumb-item text-sm">Welcome to Kata Kinne </li>
           </ol>
-          <h6 className="font-weight-bolder mb-0">Tables</h6>
+          <h6 className="font-weight-bolder mb-0">{userName}</h6>
         </nav>
         <div
           className="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
           id="navbar"
         >
           <div className="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div className="input-group">
+            {/* <div className="input-group">
               <span className="input-group-text text-body">
                 <i className="fas fa-search" aria-hidden="true"></i>
               </span>
@@ -38,16 +53,21 @@ const HeaderComponent = () => {
                 className="form-control"
                 placeholder="Type here..."
               />
-            </div>
+            </div> */}
           </div>
+
           <ul className="navbar-nav justify-content-end">
             <li className="nav-item d-flex align-items-center">
-              <a href="#" className="nav-link text-body font-weight-bold px-0">
-                <i className="fa fa-user me-sm-1"></i>
-                <span className="d-sm-inline d-none">Sign In</span>
-              </a>
+              <div
+                className="nav-link text-body font-weight-bold px-0 link-danger"
+                style={{ cursor: "pointer" }}
+                onClick={logout}
+              >
+                <i className="fas fa-right-from-bracket me-sm-1 link-danger"></i>
+                <span className="d-sm-inline d-none link-danger">Logout</span>
+              </div>
             </li>
-            <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
+            {/* <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a
                 href="#"
                 className="nav-link text-body p-0"
@@ -175,7 +195,7 @@ const HeaderComponent = () => {
                   </a>
                 </li>
               </ul>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

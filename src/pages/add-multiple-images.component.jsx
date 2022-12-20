@@ -28,6 +28,11 @@ const AddMultipleImagesComponent = ({ somethingsChages, dectedChanges }) => {
 
     fetch(url + "/addproductimage/", {
       method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
       body: formData,
     }).then((res) => dectedChanges(somethingsChages));
   };
@@ -39,6 +44,10 @@ const AddMultipleImagesComponent = ({ somethingsChages, dectedChanges }) => {
   const deleteImage = (e) => {
     fetch(editUrl + `/productimage/${e}/`, {
       method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        Authorization: "Token " + localStorage.getItem("token"),
+      },
     }).then((res) => dectedChanges(somethingsChages));
   };
 

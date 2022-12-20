@@ -30,7 +30,13 @@ const EditProductComponent = () => {
   const { state } = useLocation();
 
   useEffect(() => {
-    fetch(editUrl + `/product/${state}/`)
+    fetch(editUrl + `/product/${state}/`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setEditProduct(data));
   }, []);
@@ -130,6 +136,10 @@ const EditProductComponent = () => {
 
     fetch(editUrl + `/product/${state}/`, {
       method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        Authorization: "Token " + localStorage.getItem("token"),
+      },
       body: formData,
     })
       .then((res) => res.json())

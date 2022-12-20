@@ -1,8 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CustomInputComponent from "../components/custom-input.component";
 import { CategoriesContext } from "../context/categories.context";
+import { TokenContext } from "../context/token.context";
 import { editUrl } from "../urls";
+import axios from "axios";
 
 const AddProductComponent = ({
   dectedChanges,
@@ -25,6 +27,7 @@ const AddProductComponent = ({
   const [image, setImage] = useState(null);
 
   const [categories] = useContext(CategoriesContext);
+  const { token } = useContext(TokenContext);
 
   const navigate = useNavigate();
 
@@ -35,12 +38,13 @@ const AddProductComponent = ({
   };
 
   const validate = (e) => {
+    console.log(image);
+
     e.preventDefault();
     const formData = new FormData();
+
     let allData = {
-      category: {
-        id: parseInt(formValues.productCategory),
-      },
+      category: parseInt(formValues.productCategory),
       name: formValues.productName,
       description: formValues.productDescription,
       price: formValues.productPrice,
@@ -49,6 +53,7 @@ const AddProductComponent = ({
       tag: formValues.productTag,
       type: formValues.productType,
     };
+
     formData.append("name", allData.name);
     formData.append("description", allData.description);
     formData.append("price", allData.price);
@@ -56,12 +61,22 @@ const AddProductComponent = ({
     formData.append("quantity", allData.quantity);
     formData.append("tag", allData.tag);
     formData.append("type", allData.type);
-    formData.append("category_id", allData.category.id);
+    formData.append("category_id", allData.category);
+
     if (image) {
       formData.append("image", image, image.name);
     }
+
+    console.log(editUrl + "/product/");
+    console.log(token);
+
     fetch(editUrl + "/product/", {
       method: "POST",
+      headers: {
+        // Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       body: formData,
     })
       .then((res) => res.json())
@@ -69,31 +84,62 @@ const AddProductComponent = ({
         dectedChanges(somethingsChages);
         setNotificationMessage("Product Added");
 
-        setFormValuse((previousInputs) => ({
-          ...previousInputs,
-          productCategory: "",
-          productName: "",
-          productDescription: "",
-          productPrice: "",
-          productDiscountPrice: "",
-          productImage: "",
-          productQuantity: "",
-          productTag: "",
-          productType: "",
-        }));
+        // setFormValuse((previousInputs) => ({
+        //   ...previousInputs,
+        //   productCategory: "",
+        //   productName: "",
+        //   productDescription: "",
+        //   productPrice: "",
+        //   productDiscountPrice: "",
+        //   productImage: "",
+        //   productQuantity: "",
+        //   productTag: "",
+        //   productType: "",
+        // }));
 
-        setImage(null);
+        // setImage(null);
       })
       .catch((err) => console.log(err));
+
+    // axios
+    //   .post(editUrl + "/product/", {
+    //     headers: {
+    //       // Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //     body: formData,
+    //   })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     dectedChanges(somethingsChages);
+    //     setNotificationMessage("Product Added");
+
+    //     setFormValuse((previousInputs) => ({
+    //       ...previousInputs,
+    //       productCategory: "",
+    //       productName: "",
+    //       productDescription: "",
+    //       productPrice: "",
+    //       productDiscountPrice: "",
+    //       productImage: "",
+    //       productQuantity: "",
+    //       productTag: "",
+    //       productType: "",
+    //     }));
+
+    //     setImage(null);
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   const imageFile = (e) => {
     setImage(e.target.files[0]);
   };
 
-  if (image) {
-    console.log(image.name);
-  }
+  // if (image) {
+  //   console.log(image.name);
+  // }
 
   return (
     <div className="add_new_product">

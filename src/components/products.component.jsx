@@ -36,6 +36,11 @@ const ProductsComponent = ({ dectedChanges, somethingsChages }) => {
   const deleteProduct = (e) => {
     fetch(editUrl + `/product/${e}/`, {
       method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     }).then((res) => dectedChanges(somethingsChages));
   };
 
